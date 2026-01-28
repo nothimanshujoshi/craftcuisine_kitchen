@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft Cuisine | Home Cooked Global Food</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35; /* Energetic Orange */
+            --secondary: #FFB300; /* Warm Yellow */
+            --dark: #1A1A1A;
+            --cream: #FFFBF2;
+            --white: #ffffff;
+            --shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- LOGO/NAV --- */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--primary); text-decoration: none; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
+            align-items: center;
+            padding: 0 5%;
+            background: var(--cream);
+            gap: 40px;
+        }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--primary); font-style: italic; }
+        .hero-text p { font-size: 1.2rem; color: #555; margin-bottom: 35px; }
+
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-main {
+            background: var(--dark);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-main:hover { transform: scale(1.05); background: var(--primary); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--dark);
+            color: var(--dark);
+            padding: 16px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-outline:hover { background: var(--dark); color: white; }
+
+        .hero-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            background: white;
+            margin-top: -50px;
+        }
+        .feat-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+        .feat-card span { font-size: 2.5rem; display: block; margin-bottom: 10px; }
+        .feat-card h4 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- DETAILED MENU SECTION --- */
+        .menu-section { padding: 80px 5%; background: var(--cream); }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .menu-category-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: left;
+            border-bottom: 5px solid var(--primary);
+        }
+        .menu-category-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; color: var(--primary); }
+        .menu-list { list-style: none; }
+        .menu-list li { 
+            padding: 10px 0; 
+            border-bottom: 1px solid #eee; 
+            display: flex; 
+            justify-content: space-between;
+            font-weight: 500;
+        }
+        .menu-list li span { color: #777; font-size: 0.9rem; font-weight: 400; }
+
+        /* --- INSTAGRAM GRID --- */
+        .section-title { text-align: center; margin: 80px 0 40px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3rem; }
+
+        .insta-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 5% 80px;
+        }
+        .insta-item {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            height: 400px;
+        }
+        .insta-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .insta-item:hover img { transform: scale(1.1); }
+        .insta-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        /* --- FORM SECTION --- */
+        .enquiry-box {
+            background: var(--dark);
+            color: white;
+            padding: 80px 5%;
+            border-radius: 50px 50px 0 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .form-ui input, .form-ui select, .form-ui textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 12px;
+            color: white;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+        .form-ui button {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            border: none;
+            color: white;
+            font-weight: 800;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .form-ui button:hover { background: var(--secondary); transform: translateY(-3px); }
+
+        /* --- FOOTER --- */
+        footer { padding: 50px 5%; text-align: center; background: #000; color: white; }
+        .insta-tag { color: var(--secondary); font-weight: 800; text-decoration: none; font-size: 1.2rem; }
+
+        @media (max-width: 900px) {
+            .hero, .enquiry-box { grid-template-columns: 1fr; text-align: center; }
+            .hero-image { order: -1; }
+            .btn-group { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Craft Cuisine</a>
+        <div style="font-weight: 600;">@craftcuisine_kitchen</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Home Cooked<br>Global Food, <span>Crafted with Love</span></h1>
+            <p>DM or Call to Pre-order Your Cravings 🤗</p>
+            <div class="btn-group">
+                <a href="#menu" class="btn-main">View Full Menu</a>
+                <a href="#quote" class="btn-outline">Get a Quote</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80" alt="Gourmet Food">
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feat-card"><span>😋</span><h4>Hygienic Food</h4></div>
+        <div class="feat-card"><span>🤌</span><h4>Authentic Taste</h4></div>
+        <div class="feat-card"><span>🥳</span><h4>Party Specialist</h4></div>
+        <div class="feat-card"><span>🧒</span><h4>Kids Special</h4></div>
+        <div class="feat-card"><span>🛵</span><h4>Doorstep Delivery</h4></div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <div class="section-title">
+            <h2>Our Signature Menu</h2>
+            <p>Purely Home-Cooked & Customizable</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-category-card">
+                <h3>Indian Classics 🥘</h3>
+                <ul class="menu-list">
+                    <li>Paneer Lababdar <span>Creamy & Rich</span></li>
+                    <li>Dal Maharani <span>Slow Cooked</span></li>
+                    <li>Awadhi Biryani <span>Aromatic</span></li>
+                    <li>Stuffed Kulcha <span>Handmade</span></li>
+                </ul>
+            </div>
+            <div class="menu-category-card">
+                <h3>Global Flavors 🌍</h3>
+                <ul class="menu-list">
+                    <li>Veg Lasagna <span>Cheese Loaded</span></li>
+                    <li>Thai Green Curry <span>Authentic</span></li>
+                    <li>Herb Roast Chicken <span>Party Fav</span></li>
+                    <li>Pink Sauce Pasta <span>Creamy</span></li>
+                </ul>
+            </div>
+            <div class="menu-category-card">
+                <h3>Kids Special 🧒</h3>
+                <ul class="menu-list">
+                    <li>Mini Sliders <span>Soft & Mild</span></li>
+                    <li>Cheese Corn Balls <span>Crunchy</span></li>
+                    <li>Smileys & Fries <span>Classic</span></li>
+                    <li>Fruit Custard <span>Healthy</span></li>
+                </ul>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-weight: 500; color: var(--primary);">* Note: All dishes are pre-ordered to ensure maximum freshness.</p>
+    </section>
+
+    <div class="section-title">
+        <h2>From Our Kitchen</h2>
+        <p>Real food for real celebrations</p>
+    </div>
+
+    <div class="insta-container">
+        <div class="insta-item">
+            <img src="https://img.freepik.com/free-photo/close-up-appetizing-ramadan-meal_23-2151182444.jpg">
+            <div class="insta-overlay">
+                <h3>Party Specialist 🥳</h3>
+                <p>Curated menus for your guest list.</p>
+            </div>
+        </div>
+        <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80">
+            <div class="insta-overlay">
+                <h3>Fresh Ingredients 🤌</h3>
+                <p>Quality you can taste in every bite.</p>
+            </div>
+        </div>
+        <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1559466273-d95e72debaf8?auto=format&fit=crop&w=600&q=80">
+            <div class="insta-overlay">
+                <h3>Hygienic Home 🏡</h3>
+                <p>Pure, safe, and delicious.</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="quote" class="enquiry-box">
+        <div>
+            <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; line-height: 1;">Ready to<br><span style="color: var(--secondary);">Pre-order?</span></h2>
+            <p style="margin-top: 20px; opacity: 0.8;">Fill the details and we'll get back to you to curate your custom global menu.</p>
+        </div>
+        <div class="form-ui">
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="tel" placeholder="WhatsApp Number" required>
+                <select>
+                    <option>Select Event Type</option>
+                    <option>House Party</option>
+                    <option>Birthday Celebration</option>
+                    <option>Small Gathering</option>
+                    <option>Kids Party</option>
+                </select>
+                <input type="text" placeholder="Number of Guests">
+                <textarea rows="4" placeholder="What dishes are you interested in? 🤗"></textarea>
+                <button type="submit">Send Enquiry 🤗</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Follow our food journey</p>
+        <a href="https://instagram.com/craftcuisine_kitchen" class="insta-tag">@craftcuisine_kitchen</a>
+        <div style="margin-top: 30px; opacity: 0.5; font-size: 0.8rem;">
+            &copy; 2026 Craft Cuisine - Home Cooked Global Food.
+        </div>
+    </footer>
+
+</body>
+</html>
